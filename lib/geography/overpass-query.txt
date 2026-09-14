@@ -1,0 +1,1 @@
+[out:json][timeout:45];(way["natural"~"^(coastline|water|wetland)$"](29.24,-95.02,29.45,-94.70);way["waterway"](29.24,-95.02,29.45,-94.70);way["landuse"~"^(industrial|port|salt_pond)$"](29.24,-95.02,29.45,-94.70);way["highway"~"^(motorway|trunk|primary|secondary|tertiary|motorway_link|trunk_link)$"](29.24,-95.02,29.45,-94.70);way["building"](29.24,-95.02,29.45,-94.70););out geom;
