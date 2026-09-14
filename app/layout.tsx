@@ -8,7 +8,7 @@ const mono = IBM_Plex_Mono({ variable: '--font-plex-mono', subsets: ['latin'], w
 export const metadata: Metadata = {
   title: '372 GeoMedia — See the Whole Picture',
   description: '372 GeoMedia connects data, geography, technology and people to turn complex information into operational understanding.',
-  metadataBase: new URL('https://geomedia-372.modest-haven-9668.chatgpt.site'),
+  metadataBase: new URL('https://geomedia-372.jasonjordan00.chatgpt.site'),
   openGraph: {
     title: '372 GeoMedia — See the Whole Picture',
     description: 'Geography turns disconnected information into operational understanding.',

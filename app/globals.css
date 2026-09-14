@@ -176,6 +176,58 @@ h1, h2, h3, p, figure { margin: 0; }
 .footer-inner .text-link { font-size: .8125rem; }
 .footer-inner .text-link svg { color: var(--primary); }
 
+.capabilities-section { padding: 68px 0 0; background: #eeeee7; border-top: 1px solid var(--border); }
+.capabilities-intro { display: grid; grid-template-columns: 1.35fr 1fr; gap: 12%; align-items: end; margin-top: 43px; margin-bottom: 49px; }
+.capabilities-intro h2 { font-size: clamp(2.2rem, 3.45vw, 3.5rem); line-height: 1.24; letter-spacing: -.05em; font-weight: 400; }
+.capabilities-intro h2 span { color: #6a7469; }
+.capabilities-intro > p { color: #5d675c; font-size: 1rem; font-weight: 300; line-height: 1.85; max-width: 410px; padding-bottom: 5px; }
+.capability-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.capability-entry { padding: 24px 31px 36px; border-top: 1px solid #bdc5b7; border-right: 1px solid #ced3c7; min-width: 0; }
+.capability-entry:nth-child(3n + 1) { padding-left: 0; }
+.capability-entry:nth-child(3n) { padding-right: 0; border-right: 0; }
+.capability-visual-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 82px; margin-bottom: 17px; }
+.capability-index { align-self: flex-start; padding-top: 9px; color: #6b7764; font-size: .75rem; }
+.capability-motif { width: 136px; height: 79px; flex-shrink: 1; }
+.motif-muted { stroke: #9da893; stroke-width: 1; }
+.motif-line { stroke: #687b5e; stroke-width: 1.1; }
+.motif-area { fill: #bd2b291c; stroke: #bd2b29; stroke-width: 1; }
+.motif-accent { stroke: #bd2b29; stroke-width: 1.5; }
+.motif-point { fill: #bd2b29; }
+.motif-surface { fill: #eeeee7; stroke: #687b5e; stroke-width: 1.1; }
+.motif-node { fill: #eeeee7; stroke: #52694a; stroke-width: 1.2; }
+.motif-raster { fill: #8f9e84; }
+.motif-raster-active { fill: #bd2b2950; }
+.capability-field { color: #68745f; font-size: .75rem; line-height: 1.7; margin-bottom: 10px; }
+.capability-entry h3 { color: #243020; font-size: clamp(1.3rem, 1.8vw, 1.7rem); line-height: 1.35; letter-spacing: -.035em; font-weight: 400; min-height: 2.7em; max-width: 290px; }
+.capability-description { color: #576351; font-size: 1rem; font-weight: 300; line-height: 1.8; margin-top: 16px; min-height: 5.4em; }
+.capability-applications { display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; }
+.capability-applications li { display: flex; gap: 10px; align-items: baseline; font-size: .875rem; line-height: 1.7; color: #364330; }
+.capability-applications li::before { content: '—'; flex-shrink: 0; font-family: var(--font-plex-mono), monospace; color: #8c9a81; }
+.capabilities-close { display: flex; align-items: center; justify-content: space-between; gap: 30px; border-top: 1px solid #bdc5b7; padding: 33px 0 38px; }
+.capabilities-close p { font-size: .875rem; line-height: 1.9; }
+.capabilities-close p span { color: #66725d; }
+.capabilities-close .text-link { flex-shrink: 0; border-bottom: 1px solid #aab5a0; }
+.capabilities-close .text-link svg { color: var(--primary); }
+
+.experience-section { padding: 64px 0 78px; background: var(--charcoal); color: #f7f6f2; }
+.experience-section .section-heading .eyebrow { color: #b5c0b2; }
+.experience-section .section-number { color: #eb7c6e; }
+.experience-section .section-rule { background: #ffffff24; }
+.experience-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 11%; align-items: center; margin-top: 63px; }
+.experience-stat { padding: 4px 0 10px; }
+.experience-number { font-size: clamp(7.5rem, 14vw, 13.5rem); line-height: .98; letter-spacing: -.08em; font-weight: 300; font-variant-numeric: lining-nums; }
+.experience-number > span { color: #d45145; font-size: .69em; vertical-align: 10%; margin-left: .055em; }
+.experience-unit { color: #c6cebf; font-size: 1.0625rem; line-height: 1.8; max-width: 230px; margin-top: 20px; }
+.experience-copy { padding-left: 38px; border-left: 1px solid #ffffff24; }
+.experience-copy h2 { font-size: clamp(1.9rem, 2.9vw, 2.8rem); line-height: 1.28; letter-spacing: -.045em; font-weight: 400; }
+.experience-copy h2 span { color: #abb8a4; }
+.experience-copy > p { margin-top: 23px; font-size: 1rem; font-weight: 300; line-height: 1.85; color: #bbc6b4; max-width: 540px; }
+.experience-copy > p + p { margin-top: 14px; }
+.experience-copy .text-link { margin-top: 23px; border-bottom: 1px solid #66765c; color: #edf0e8; }
+.experience-copy .text-link svg { color: #eb7c6e; }
+.experience-section a:focus-visible { outline-color: #f7f6f2; }
+.capabilities-section:focus, .experience-section:focus { outline: none; }
+
 @keyframes observation-register { from { opacity: 0; transform: scale(.3); } 35% { opacity: .9; } to { opacity: .55; transform: scale(1); } }
 @keyframes network-register { from { stroke-dashoffset: 2200; opacity: .1; } to { stroke-dashoffset: 0; opacity: 1; } }
 
@@ -183,6 +235,11 @@ h1, h2, h3, p, figure { margin: 0; }
   .hero-map { right: max(-70px, calc((100vw - 1650px) / 2)); width: 1300px; height: 990px; }
 }
 @media (max-width: 1100px) {
+  .capabilities-intro { gap: 7%; }
+  .capability-entry { padding-inline: 23px; }
+  .capability-description { min-height: 7.2em; }
+  .experience-grid { gap: 6%; }
+  .experience-copy { padding-left: 28px; }
   .header-inner { gap: 25px; }
   .brand { width: 180px; }
   .header-cta { margin-left: 0; gap: 14px; }
@@ -198,6 +255,26 @@ h1, h2, h3, p, figure { margin: 0; }
   .step-heading svg { width: 16px; }
 }
 @media (max-width: 800px) {
+  .capabilities-section { padding-top: 46px; }
+  .capabilities-intro { grid-template-columns: 1fr; gap: 23px; margin-top: 34px; margin-bottom: 34px; }
+  .capabilities-intro h2 { font-size: clamp(2.1rem, 6vw, 3rem); }
+  .capabilities-intro > p { max-width: 540px; }
+  .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .capability-entry { padding-bottom: 28px; }
+  .capability-entry:nth-child(n) { padding-inline: 23px; border-right: 1px solid #ced3c7; }
+  .capability-entry:nth-child(odd) { padding-left: 0; }
+  .capability-entry:nth-child(even) { padding-right: 0; border-right: 0; }
+  .capability-entry h3 { font-size: 1.4rem; }
+  .capabilities-close { align-items: flex-start; }
+  .capabilities-close p { max-width: 340px; }
+  .experience-section { padding: 44px 0 51px; }
+  .experience-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 38px; }
+  .experience-stat { display: flex; align-items: center; gap: 34px; }
+  .experience-number { font-size: clamp(7rem, 18vw, 10rem); }
+  .experience-unit { margin-top: 0; font-size: 1rem; }
+  .experience-copy { padding-left: 0; padding-top: 28px; border-left: 0; border-top: 1px solid #ffffff24; }
+  .experience-copy h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); }
+  .experience-copy > p { max-width: 590px; }
   .header-inner { height: 90px; }
   .desktop-nav, .header-cta { display: none; }
   .menu-trigger { display: flex; align-items: center; gap: 16px; min-width: 80px; min-height: 44px; border: 0; background: transparent; padding: 8px 0 8px 10px; font-size: .875rem; }
@@ -227,6 +304,23 @@ h1, h2, h3, p, figure { margin: 0; }
   .footer-inner p { order: 3; width: 100%; }
 }
 @media (max-width: 480px) {
+  .capabilities-intro h2 { font-size: 2rem; }
+  .capability-grid { grid-template-columns: minmax(0, 1fr); }
+  .capability-entry:nth-child(n) { padding: 21px 0 29px; border-right: 0; }
+  .capability-visual-row { height: 62px; margin-bottom: 7px; }
+  .capability-motif { width: 113px; height: 65px; }
+  .capability-entry h3 { min-height: 0; max-width: 100%; font-size: 1.45rem; }
+  .capability-description { min-height: 0; margin-top: 15px; }
+  .capability-applications { margin-top: 17px; gap: 8px; }
+  .capabilities-close { flex-direction: column; gap: 17px; padding-block: 25px 31px; }
+  .capabilities-close p { font-size: .875rem; }
+  .capabilities-close .text-link { font-size: .875rem; }
+  .experience-section .section-heading { gap: 12px; }
+  .experience-section .section-heading .eyebrow { flex-shrink: 1; font-size: .75rem; }
+  .experience-stat { align-items: flex-start; gap: 16px; flex-direction: column; }
+  .experience-number { font-size: 8rem; }
+  .experience-unit { max-width: 240px; }
+  .experience-copy h2 { font-size: 1.85rem; }
   .brand { width: 166px; }
   .header-inner { height: 88px; }
   .hero-eyebrow { font-size: .75rem; gap: 10px; letter-spacing: .065em; }

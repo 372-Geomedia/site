@@ -1,6 +1,8 @@
 import { Header } from '@/components/site/header';
 import { Hero } from '@/components/site/hero';
 import { SpatialStory } from '@/components/site/spatial-story';
+import { Capabilities } from '@/components/site/capabilities';
+import { Experience } from '@/components/site/experience';
 import { Footer } from '@/components/site/footer';
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <SpatialStory />
+        <Capabilities />
+        <Experience />
       </main>
       <Footer />
     </>

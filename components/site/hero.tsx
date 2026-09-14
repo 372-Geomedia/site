@@ -13,7 +13,7 @@ export function Hero() {
           <p>We connect data, geography, technology and people to turn complex information into operational understanding.</p>
           <div className="hero-actions">
             <a className="button button-red" href={`${company.url}/projects/`}>Explore our work <Arrow diagonal /></a>
-            <a className="text-link light-link" href={`${company.url}/services/`}>What we do <Arrow /></a>
+            <a className="text-link light-link" href="#capabilities">What we do <Arrow /></a>
           </div>
         </div>
         <div className="hero-bottom">
