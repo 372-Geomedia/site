@@ -15,7 +15,7 @@ The original workspace had one logo and no code, framework, package manager, or 
 - `app/page.tsx`: composition only. Components are under `components/site/`.
 - Static content and map rendering are server components. Desktop active navigation uses `usePathname`; the mobile navigation also uses client state and a Sheet primitive for keyboard dismissal and focus management. The mobile menu resets on route changes.
 - `next/image` handles the supplied logo. Sora and IBM Plex Mono use `next/font`.
-- Cloudflare-compatible Sites deployment, configured in `.openai/hosting.json` and `vite.config.ts`.
+- Static export (`output: 'export'` in `next.config.ts`): every route is pre-rendered to HTML at build time and served by nginx in Docker. The Cloudflare and Sites Vite plugins in `vite.config.ts` still run during the build, but the export no longer emits the `wrangler.json` the Sites/Wrangler preview used.
 
 ## Development
 
@@ -31,6 +31,28 @@ npm run check:routes -- http://localhost:3000
 ```
 
 The development server prints its local URL (normally http://localhost:3000). If that port is occupied, use the exact alternative URL it prints for previewing and route checks.
+
+## Deployment
+
+Production is a Docker container on the VPS behind the existing host-mode Traefik, the same setup as Hubbub. The image builds the site and serves `dist/client` with nginx; there is no Node runtime in production.
+
+- `Dockerfile`: builds on Debian, because the Cloudflare Vite plugin's workerd binary does not run on Alpine, then serves with `nginx:alpine`.
+- `nginx.conf`: serves exported pages (`/about` → `about.html`). For requests carrying an `RSC: 1` header it serves the matching `.rsc` payload as `text/x-component` instead. The client router requests the page URL with that header during in-site navigation and rejects any other content type, so without this rule every link silently becomes a full page load.
+- `docker-compose.yml`: Traefik labels and no published port. Set `SITE_DOMAIN` in `.env` (see `.env.example`); the router answers on the domain and its `www` subdomain.
+
+Preview the production container locally, then run the route checks against it:
+
+```sh
+npm run preview
+npm run check:routes -- http://localhost:4173
+```
+
+First deploy: clone the repository into `/docker/geomedia` on the VPS and create `.env` from `.env.example`. Point DNS for the domain and `www` at the VPS; if the domain is on Cloudflare, keep both records DNS-only (grey cloud) or the Let's Encrypt HTTP challenge fails. Hostinger's Docker panel cannot build images, so deploy over SSH. To deploy or update:
+
+```sh
+git pull
+docker compose -p geomedia up -d --build
+```
 
 ## Visual system
 

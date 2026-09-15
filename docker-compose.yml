@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    # No published port: host-mode Traefik reaches the container's bridge IP.
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.geomedia.rule=Host(`${SITE_DOMAIN:?set SITE_DOMAIN in .env}`) || Host(`www.${SITE_DOMAIN}`)
+      - traefik.http.routers.geomedia.entrypoints=websecure
+      - traefik.http.routers.geomedia.tls.certresolver=letsencrypt
+      - traefik.http.services.geomedia.loadbalancer.server.port=80
