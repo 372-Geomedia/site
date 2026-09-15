@@ -1,6 +1,6 @@
 import { Arrow } from './arrow';
 import { LayerStack } from './layer-stack';
-import { company } from '@/lib/site-content';
+import Link from 'next/link';
 
 const steps = [
   { title: 'Awareness', detail: 'See what is happening.' },
@@ -20,7 +20,7 @@ export function SpatialStory() {
             <p className="story-lead">Organizations rarely lack data.<br />They lack context.</p>
             <p>Location is the common ground. It connects observations, infrastructure, weather, assets and people—even when that information lives in separate systems.</p>
             <p>We build the systems that bring those relationships into view.</p>
-            <a className="text-link story-link" href={`${company.url}/about-us/`}>Meet 372 GeoMedia <Arrow diagonal /></a>
+            <Link className="text-link story-link" href="/about">Meet 372 GeoMedia <Arrow diagonal /></Link>
           </div>
           <figure className="layer-figure">
             <LayerStack />

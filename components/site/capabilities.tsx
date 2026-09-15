@@ -2,16 +2,17 @@ import { capabilities } from '@/lib/capabilities';
 import { company } from '@/lib/site-content';
 import { Arrow } from './arrow';
 import { CapabilityMotif } from './capability-motif';
+import Link from 'next/link';
 
-export function Capabilities() {
+export function Capabilities({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="capabilities-section" id="capabilities" aria-labelledby="capabilities-heading" tabIndex={-1}>
+    <section className={`capabilities-section${compact ? ' capabilities-compact' : ''}`} id="capabilities" aria-labelledby="capabilities-heading" tabIndex={-1}>
       <div className="shell">
-        <div className="section-heading">
+        <div className={compact ? 'sr-only' : 'section-heading'}>
           <span className="eyebrow"><span className="section-number">02 /</span> Capabilities</span>
           <span className="section-rule" />
         </div>
-        <div className="capabilities-intro">
+        <div className={compact ? 'sr-only' : 'capabilities-intro'}>
           <h2 id="capabilities-heading">The right tools.<br /><span>A connected approach.</span></h2>
           <p>From a single field workflow to an enterprise GIS, we connect the data, analysis and software your work calls for.</p>
         </div>
@@ -33,7 +34,7 @@ export function Capabilities() {
         </div>
         <div className="capabilities-close">
           <p>Have a challenge that crosses these disciplines?<br /><span>That’s where geography brings it together.</span></p>
-          <a className="text-link" href={company.contact}>Talk through your project <Arrow diagonal /></a>
+          <Link className="text-link" href={company.contact}>Talk through your project <Arrow diagonal /></Link>
         </div>
       </div>
     </section>

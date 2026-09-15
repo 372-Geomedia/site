@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Sora, IBM_Plex_Mono } from 'next/font/google';
+import { Header } from '@/components/site/header';
+import { Footer } from '@/components/site/footer';
 import './globals.css';
 
 const sans = Sora({ variable: '--font-sora', subsets: ['latin'], display: 'swap' });
@@ -19,5 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${sans.variable} ${mono.variable}`}>{children}</body></html>;
+  return <html lang="en"><body className={`${sans.variable} ${mono.variable}`}>
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content" tabIndex={-1}>{children}</main>
+    <Footer />
+  </body></html>;
 }

@@ -33,7 +33,7 @@ export function MapField() {
         {observations.map(({ x, y }, index) => <g key={x}><circle cx={x} cy={y} r="17" className="observation-ring" style={{ animationDelay: `${index * 180}ms` }} /><circle cx={x} cy={y} r="4" className="map-observation" /></g>)}
         <g transform="rotate(16 795 482)"><path d="M795 465V425H853" stroke="#d46a58" strokeWidth=".8" /><text x="862" y="429" className="map-detail-label">FIELD OBSERVATION</text></g>
       </svg>
-      <div className="map-key mono"><span />Illustrative information layers</div>
+
     </div>
   );
 }
