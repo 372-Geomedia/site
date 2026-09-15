@@ -1,0 +1,13 @@
+# Temporary review access by IP, before DNS points at the VPS:
+#   docker compose -p geomedia -f docker-compose.yml -f docker-compose.preview.yml up -d --build
+# then browse http://<vps-ip>:8081 (set PREVIEW_PORT in .env to change it).
+# Once DNS is live, run the normal command without this file; that removes
+# the port and turns the Traefik router back on.
+services:
+  web:
+    ports:
+      - "${PREVIEW_PORT:-8081}:80"
+    labels:
+      # Keep Traefik from requesting a certificate for a domain that does not
+      # resolve here yet.
+      - traefik.enable=false

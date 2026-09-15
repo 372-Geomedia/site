@@ -39,6 +39,7 @@ Production is a Docker container on the VPS behind the existing host-mode Traefi
 - `Dockerfile`: builds on Debian, because the Cloudflare Vite plugin's workerd binary does not run on Alpine, then serves with `nginx:alpine`.
 - `nginx.conf`: serves exported pages (`/about` → `about.html`). For requests carrying an `RSC: 1` header it serves the matching `.rsc` payload as `text/x-component` instead. The client router requests the page URL with that header during in-site navigation and rejects any other content type, so without this rule every link silently becomes a full page load.
 - `docker-compose.yml`: Traefik labels and no published port. Set `SITE_DOMAIN` in `.env` (see `.env.example`); the router answers on the domain and its `www` subdomain.
+- `docker-compose.preview.yml`: temporary review access by IP before DNS is ready. It publishes the site over plain HTTP on port 8081 (`PREVIEW_PORT` in `.env` changes it) and disables the Traefik router, so Traefik does not request a certificate for a domain that does not point here yet. Run `docker compose -p geomedia -f docker-compose.yml -f docker-compose.preview.yml up -d --build`, then browse `http://<vps-ip>:8081`. Once DNS is live, the normal command below removes the port.
 
 Preview the production container locally, then run the route checks against it:
 
