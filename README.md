@@ -56,9 +56,9 @@ docker compose -p geomedia up -d --build
 
 ## Visual system
 
-Vermilion `#BD2B29`, charcoal `#151D1C`, ivory `#F7F6F2`, and neutral cartographic tones. Shared width/gutter and typography tokens live in `app/globals.css`. Red identifies information layers and primary actions. Motion registers observation markers and traces real road geometry once; reduced motion and narrow-screen rules disable it.
+Vermilion `#BD2B29`, charcoal `#151D1C`, ivory `#F7F6F2`, and neutral cartographic tones. Shared width/gutter and typography tokens live in `app/globals.css`. Red identifies information layers and primary actions. The hero map displays the complete analytical composition statically, with hotspots, a concentration grid, and highlighted footprints. It has no playback panel, animation, or client-side map state.
 
-The map uses real OpenStreetMap geometry for Galveston Bay. Decorative observation markers are explicitly illustrative. It is not a live operational feed. See `lib/geography/README.md` for data provenance, licensing, extent, simplification, and reproduction details. Visible OSM attribution appears beneath the hero. The graphic is SVG; no map SDK or WebGL runtime is loaded.
+The map uses real OpenStreetMap geometry for Galveston Bay. `lib/geography/proximity-analysis.ts` derives an illustrative proximity field from three synthetic observations placed inside checked mapped footprints. The grid and candidate footprints are restricted to land outside mapped water. These editorial hotspots are not live observations or measured operational risks. See `lib/geography/README.md` for data provenance, licensing, extent, simplification, and reproduction details. Visible OSM attribution appears beneath the hero. The graphic is SVG; no map SDK or WebGL runtime is loaded.
 
 ## Navigation and content
 

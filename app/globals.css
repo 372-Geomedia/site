@@ -133,11 +133,10 @@ h1, h2, h3, p, figure { margin: 0; }
 .map-label { font-family: var(--font-plex-mono), monospace; fill: #c8ccba; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
 .map-water-label { fill: #869888; font-size: 18px; letter-spacing: 7px; }
 .map-observation { fill: #f2ded1; stroke: #d54a3f; stroke-width: 4; }
-.observation-ring { fill: none; stroke: #d54a3f; stroke-width: 1; opacity: .55; transform-box: fill-box; transform-origin: center; animation: observation-register 2.8s ease-out 1 both; }
-.map-registered-line { fill: none; stroke: #d85245; stroke-width: 2.5; stroke-dasharray: 2200; stroke-dashoffset: 0; animation: network-register 2.8s ease-out 1 both; }
 .map-detail-label { font-family: var(--font-plex-mono), monospace; fill: #e3b4a0; font-size: 12px; letter-spacing: 1.4px; }
 .map-key { position: absolute; right: var(--gutter); top: 43px; display: flex; align-items: center; gap: 13px; z-index: 1; color: #bbc4b6; font-size: .75rem; }
-.map-key > span { width: 7px; height: 7px; border: 1px solid #d95a4c; background: #bd2b2950; }
+.map-key .map-key-ramp { width: 54px; height: 5px; background: linear-gradient(90deg, #9baf98, #c7a36d, #dc6346); }
+.map-key-text > span { display: block; margin-top: 5px; font-size: .6875rem; color: #a5b4a8; }
 
 .spatial-story { padding: 69px 0 72px; background: var(--background); }
 .section-heading { display: flex; align-items: center; gap: 42px; }
@@ -492,9 +491,6 @@ h1, h2, h3, p, figure { margin: 0; }
   .brand-code { font-size: 6.5rem; }
 }
 
-@keyframes observation-register { from { opacity: 0; transform: scale(.3); } 35% { opacity: .9; } to { opacity: .55; transform: scale(1); } }
-@keyframes network-register { from { stroke-dashoffset: 2200; opacity: .1; } to { stroke-dashoffset: 0; opacity: 1; } }
-
 @media (min-width: 1700px) {
   .hero-map { right: max(-70px, calc((100vw - 1650px) / 2)); width: 1300px; height: 990px; }
 }
@@ -596,8 +592,6 @@ h1, h2, h3, p, figure { margin: 0; }
   .hero-actions .text-link { gap: 12px; font-size: .8125rem; }
   .hero-map { width: 780px; height: 720px; top: 90px; right: -390px; opacity: .6; transform: rotate(-20deg); }
   .map-field::after { background: linear-gradient(180deg, #151d1c 0%, #151d1cd9 40%, #151d1c12 80%, #151d1c 100%), linear-gradient(90deg, #151d1c8c, transparent); }
-  .map-observation, .observation-ring { animation: none; }
-  .map-registered-line { animation: none; }
   .hero-bottom { padding-bottom: 15px; }
   .hero-caption { flex-direction: column; gap: 4px; padding-block: 15px; }
   .hero-caption > span, .hero-caption a { max-width: none; text-align: left; }
@@ -617,6 +611,15 @@ h1, h2, h3, p, figure { margin: 0; }
   .footer-inner { align-items: flex-start; }
   .footer-inner .text-link { font-size: .75rem; gap: 9px; }
 }
+/* Static analytical layers share the basemap's projected extent. */
+.analysis-distance-rings { stroke: #bec6a8; stroke-width: .85; stroke-dasharray: 3 7; opacity: .56; }
+.analysis-nearby-footprints { fill: #d4d5ad; stroke: #e4e0bb; stroke-width: .8; opacity: .72; }
+.analysis-candidates { fill: #ef9b73; stroke: #ffe2b9; stroke-width: 1.3; }
+.analysis-observation-ring { fill: none; stroke: #e58767; stroke-width: 1.2; opacity: .8; }
+.analysis-crosshair { stroke: #f2ba95; stroke-width: 1; }
+.analysis-point-label { fill: #f5ccad; font-family: var(--font-plex-mono), monospace; font-size: 12px; letter-spacing: 1px; }
+.analysis-result-label path { stroke: #f0b18e; stroke-width: 1; }
+.analysis-result-label text { fill: #f0d2af; font-family: var(--font-plex-mono), monospace; font-size: 11px; letter-spacing: 1.5px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

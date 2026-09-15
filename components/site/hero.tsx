@@ -18,7 +18,6 @@ export function Hero() {
         </div>
         <div className="hero-bottom">
           <a href="#connected-view" className="scroll-link"><span className="scroll-icon">↓</span>A different perspective</a>
-          
         </div>
       </div>
       <div className="hero-caption shell"><span>Geographic context. Connected information.</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">Map data © OpenStreetMap contributors</a></div>
